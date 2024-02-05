@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('chat/with/{user}', 'App\Http\Controllers\ChatController@chat_with')->name('chat.with');
+
+Route::get('chat/{chat}', 'App\Http\Controllers\ChatController@show')->name('chat.show');
+
+Route::post('message/sent', '\App\Http\Controllers\MessageController@sent')->name('message.sent');
